@@ -5,8 +5,11 @@
 char *address_tkn(char *cmd)
 {
     FILE *fp;
-    char address[MAX_PATH_LENGTH];  // Fixed size array to store address
-    char *cmd_address = malloc(MAX_PATH_LENGTH);  // Allocate memory for cmd_address
+    /* Fixed size array to store address */ 
+    char address[MAX_PATH_LENGTH];
+    
+    /* Allocate memory for cmd_address */ 
+    char *cmd_address = malloc(MAX_PATH_LENGTH);
     char *address_cpy;
 
     if (cmd_address == NULL)
@@ -15,7 +18,7 @@ char *address_tkn(char *cmd)
         exit(EXIT_FAILURE);
     }
 
-    // Open the command for reading
+    /* Open the command for reading */ 
     fp = popen("echo $PATH", "r");
     if (fp == NULL)
     {
@@ -23,7 +26,7 @@ char *address_tkn(char *cmd)
         exit(EXIT_FAILURE);
     }
 
-    // Read the output a line at a time
+    /* Read the output a line at a time */ 
     if (fgets(address, sizeof(address) - 1, fp) == NULL)
     {
         perror("Failed to read command output");
@@ -32,22 +35,22 @@ char *address_tkn(char *cmd)
 
     address_cpy = strdup(address);
 
-    // Tokenize the address
+    /* Tokenize the address */ 
     char *folder = strtok(address_cpy, ":");
     
-    // Iterate through folders in PATH
+    /* Iterate through folders in PATH */ 
     while (folder != NULL)
     {
         strcpy(cmd_address, folder);
 
-        // Check if cmd_address ends with a slash
+        /* Check if cmd_address ends with a slash */ 
         if (cmd_address[strlen(cmd_address) - 1] != '/')
             strcat(cmd_address, "/");
 
-        // Add command to the address
+        /* Add command to the address */ 
         strcat(cmd_address, cmd);
 
-        // Check if the command is executable
+        /* Check if the command is executable */ 
         if (access(cmd_address, X_OK) == 0)
         {
             free(address_cpy);
@@ -68,7 +71,7 @@ void input_tkn(char *input)
     size_t len = 0;
     int chars_read;
 
-    // Input String tokening
+    /* Input String tokening */ 
     char *delims = " \n\a\t\r";
     char *input_args[MAX_ARGUMENTS];
     char *tkns;
@@ -79,10 +82,10 @@ void input_tkn(char *input)
 
     if (chars_read == -1)
     {
-        // Exit command from input / Ctrl + D
+        /* Exit command from input / Ctrl + D */ 
         if (feof(stdin))
         {
-            // exit
+            /* exit */ 
             free(input);
             exit(0);
         }
@@ -101,7 +104,7 @@ void input_tkn(char *input)
     {
         int index = 0;
 
-        // Tokenizing the input string
+        /* Tokenizing the input string */ 
         tkns = strtok(input, delims);
 
         while (tkns != NULL && index < MAX_ARGUMENTS - 1)
@@ -112,10 +115,10 @@ void input_tkn(char *input)
 
         input_args[index] = NULL;
 
-        // Handle Built-in commands
+        /* Handle Built-in commands */ 
         
 
-        // Forking
+        /* Forking */ 
         pid = fork();
 
         if (pid == -1)
@@ -136,7 +139,7 @@ void input_tkn(char *input)
             }
             else
             {
-                // Child process cleanup
+                /* Child process cleanup */ 
                 int status;
                 waitpid(pid, &status, 0);
 

@@ -4,6 +4,7 @@
 
 #define MAX_PATH_LENGTH 1024
 #define MAX_ARGUMENTS 10
+#define MAX_INPUT_LENGTH 100
 #define PROMPT " $ - "
 
 #include <stdio.h>
