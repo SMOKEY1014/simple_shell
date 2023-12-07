@@ -28,16 +28,18 @@ int main(void) {
         /*added code */
         printf("Tokens:\n");
         for (int i = 0; i < num_tokens; i++) {
+            
             printf("%s\n", tokens[i]);
         }
 
         // Close the pipe
         pclose(fp);
+        char *input[100];
+        /* Prompt for user input*/
+		write(1, "Shell$ ", 7);
 
-        // Prompt for user input
-        char input[100];
-        printf("$ - ");
-        scanf("%99[^\n]", input);
+		/* Getting users input*/
+		input = getline(&line, &len, stdin);
 
         // Execute the command using the path tokens
         executeCommand(input, tokens[0]);

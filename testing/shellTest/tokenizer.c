@@ -3,7 +3,7 @@
 
 void executeCommand(char *input, char *path) {
     // Tokenize the input string
-    char *delimiters = " \t\r\n\a";
+    char *delimiters = " \n";
     char *args[MAX_ARGUMENTS];
     int num_args = 0;
 
@@ -21,8 +21,10 @@ void executeCommand(char *input, char *path) {
         char full_path[MAX_PATH_LENGTH];
         snprintf(full_path, sizeof(full_path), "%s/%s", path, args[0]);
 
-        if (access(full_path, X_OK) == 0) {
+        if (access(full_path, X_OK) == 0 && access(full_path, F_OK)) {
             programPath = strdup(full_path);
+            
+            printf("Program path now is : %s ",programPath);
             break;
         }
     }
@@ -34,7 +36,7 @@ void executeCommand(char *input, char *path) {
 
     // Execute the program
     char *envp[] = { NULL };
-
+    execve(programPath, args, envp);
     if (execve(programPath, args, envp) == -1) {
         perror("execve");
         exit(EXIT_FAILURE);
