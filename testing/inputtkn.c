@@ -33,7 +33,6 @@ int main(void)
 		else
 		{
 			perror("Error recognizing input");
-			//free(input);
 			return(-1);
 		}
 	}
@@ -44,11 +43,11 @@ int main(void)
 	else{
 
 	
-		int index = 0;
+		int index;
 
 		/* Tokenizing the input string */ 
 		tkns = strtok(input, delims);
-		for( index; tkns != NULL && index < MAX_ARGUMENTS - 1; index++)
+		for( index = 0; tkns != NULL && index < MAX_ARGUMENTS - 1; index++)
 		{
 			input_args[index] = tkns;
 			tkns = strtok(NULL, delims);
@@ -99,7 +98,7 @@ int main(void)
 					}
 				}
 		}
-	}//mnmnm
+	}
 	}
 	free(input);
 	return(0);
