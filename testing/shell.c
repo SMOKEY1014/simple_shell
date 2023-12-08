@@ -11,6 +11,7 @@ int main(void)
 		printf(PROMPT);
 
 		input_tkn(input);
+		
 	}
 	free(input); /* Free allocated memory */
 	return (0);
