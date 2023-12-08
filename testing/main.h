@@ -7,6 +7,7 @@
 #define MAX_INPUT_LENGTH 100
 #define PROMPT " $ - "
 
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -15,9 +16,10 @@
 #include <sys/wait.h>
 #include <sys/stat.h>
 
+
 char *address_tkn(char *cmd);
 extern char **environ;
-void input_tkn(char *input);
+char *input_tkn(char *input);
 int main(void);
 
 
