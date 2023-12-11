@@ -45,7 +45,8 @@ void builtin_cd(char *args)
 
 void builtin_exit(void)
 {
-	write(1, "Exiting...\n", 12);
+	/*write(1, "Exiting...\n", 12); */
+	_print("Exited successfully...\n");
 	sleep(1.5);
 	exit(0);
 }

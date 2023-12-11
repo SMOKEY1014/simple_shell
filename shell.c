@@ -23,7 +23,7 @@ int main(void)
 	while (1)
 	{
 
-		printf(PROMPT);
+		_print(PROMPT);
 		chars_read = getline(&input, &len, stdin);
 
 
@@ -34,6 +34,7 @@ int main(void)
 			{
 				/* exit */
 				write(1, "\nExiting...\n", 13);
+				_print("Exited successfully...\n");
 				sleep(1.5);
 				free(input);
 				exit(0);
@@ -99,7 +100,7 @@ int main(void)
 
 					if (WEXITSTATUS(status) && WIFEXITED(status) != 0)
 					{
-						printf("Child Process -%d exit Status : %d\n", pid, WEXITSTATUS(status));
+						_print("Child Process -%d exit Status : %d\n", pid, WEXITSTATUS(status));
 					}
 				}
 			}
