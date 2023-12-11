@@ -23,7 +23,7 @@ int main(void)
 	while (1)
 	{
 
-		_print(PROMPT);
+		print_shell_prompt();
 		chars_read = getline(&input, &len, stdin);
 
 
