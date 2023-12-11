@@ -1,4 +1,11 @@
 #include "main.h"
+/**
+ * builtin_cd - Handles the 'cd' built-in command.
+ * @args: Argument passed to the 'cd' command.
+ *
+ * If the user does not pass any argument, changes to the user's home dir.
+ * If an argument is provided, changes to the specified directory.
+ */
 
 void builtin_cd(char *args)
 {
@@ -30,7 +37,11 @@ void builtin_cd(char *args)
 		}
 	}
 }
-
+/**
+ * builtin_exit - Handles the 'exit' built-in command.
+ *
+ * Displays an exit message to standard output, sleeps then exits.
+ */
 
 void builtin_exit(void)
 {
@@ -38,4 +49,3 @@ void builtin_exit(void)
 	sleep(1.5);
 	exit(0);
 }
-

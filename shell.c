@@ -1,4 +1,12 @@
 #include "main.h"
+void hack(void);
+/**
+ * main - Entry point for the shell program, it also tokenizes
+ * and processes users input.
+ *
+ * Return: Always 0.
+ */
+
 
 int main(void)
 {

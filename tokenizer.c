@@ -1,4 +1,10 @@
 #include "main.h"
+/**
+ * address_tkn - Tokenizes the PATH and returns the tokens to full path(folder)
+ * @cmd: Command to be located in the PATH.
+ *
+ * Return: Full path of the command or cmd itself if full path wasn't found.
+ */
 
 char *address_tkn(char *cmd)
 {

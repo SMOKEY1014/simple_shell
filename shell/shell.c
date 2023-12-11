@@ -1,5 +1,7 @@
 #include "main.h"
 
+void hack();
+
 int main(void)
 {
 	size_t len = 0;
