@@ -21,7 +21,7 @@ void builtin_cd(char *args)
 		}
 		else
 		{
-			/* Take the user home*/
+			/* cd home*/
 			if (chdir(home) != 0)
 			{
 				perror("could not change directory");
@@ -30,7 +30,7 @@ void builtin_cd(char *args)
 	}
 	else
 	{
-		/* If the user adds an argument*/
+		/* If the user adds argument*/
 		if (chdir(args) != 0)
 		{
 			perror("could not change directory");
@@ -45,16 +45,5 @@ void builtin_cd(char *args)
 
 void builtin_exit(void)
 {
-	int i;
-
-	write(1, "Exiting", 8);
-	for (i = 0; i < 3; i++)
-	{
-		sleep(1);
-		_print(".");
-	}
-
-	sleep(1.5);
-	_print("\nExited successfully !\n");
 	exit(0);
 }

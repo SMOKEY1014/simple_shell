@@ -41,7 +41,7 @@ char *address_tkn(char *cmd)
 		if (access(cmd_address, X_OK) == 0)/* Check if the command is executable */
 		{
 			free(address_cpy);
-			return (cmd_address);
+			return (strdup(cmd_address));
 		}
 		folder = strtok(NULL, ":");
 	}

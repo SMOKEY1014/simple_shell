@@ -20,6 +20,7 @@
 char *address_tkn(char *cmd);
 extern char **environ;
 char *input_tkn(char *input);
+void handler(int signal);
 void print_shell_prompt(void);
 void _print(const char *format, ...);
 void builtin_cd(char *input_args);

@@ -20,30 +20,22 @@ int main(void)
 	char *tkns;
 	int pid;
 
+	signal(SIGINT, handler);
+
 	while (1)
 	{
-
 		print_shell_prompt();
+
 		chars_read = getline(&input, &len, stdin);
 
 
 		if (chars_read == -1)
 		{
+			
 			/* Exit command from input / Ctrl + D */
 			if (feof(stdin))
 			{
 				/* exit */
-				int i;
-
-				write(1, "Exiting", 8);
-				for (i = 0; i < 3; i++)
-				{
-					sleep(1);
-					_print(".");
-				}
-
-				sleep(1.5);
-				_print("\nExited successfully !\n");
 				free(input);
 				exit(0);
 			}
@@ -120,5 +112,11 @@ int main(void)
 		}
 	}
 	free(input);
+	printf("Is a TTY: %d\n", isatty(STDIN_FILENO));
+	if (isatty(STDIN_FILENO) == 1)
+	{
+		printf("Inside isatty condition\n");
+		write(1, "\n", 1);
+	}
 	return (0);
 }
