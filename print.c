@@ -1,4 +1,9 @@
 #include "main.h"
+/**
+ * _print - prints an output to the screen.
+ * @format: takes the required format of string.
+ */
+
 
 void _print(const char *format, ...)
 {
