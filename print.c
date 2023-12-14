@@ -2,12 +2,14 @@
 
 void _print(const char *format, ...)
 {
-    char buffer[1024];
-    va_list args;
-    va_start(args, format);
+	char buffer[1024];
+	va_list args;
 
-    vsnprintf(buffer, sizeof(buffer), format, args);
-    write(1, buffer, strlen(buffer));
+	va_start(args, format);
 
-    va_end(args);
+	vsnprintf(buffer, sizeof(buffer), format, args);
+
+	write(1, buffer, strlen(buffer));
+
+	va_end(args);
 }

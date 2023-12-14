@@ -33,9 +33,17 @@ int main(void)
 			if (feof(stdin))
 			{
 				/* exit */
-				write(1, "\nExiting...\n", 13);
-				_print("Exited successfully...\n");
+				int i;
+
+				write(1, "Exiting", 8);
+				for (i = 0; i < 3; i++)
+				{
+					sleep(1);
+					_print(".");
+				}
+
 				sleep(1.5);
+				_print("\nExited successfully !\n");
 				free(input);
 				exit(0);
 			}
@@ -56,6 +64,11 @@ int main(void)
 			tkns = strtok(input, delims);
 			for (index = 0; tkns != NULL && index < MAX_ARGUMENTS - 1; index++)
 			{
+				if (strcmp(tkns, "&&") == 0 || (strcmp(tkns, "||") == 0))
+				{
+					input_args[index + 1] = tkns;
+					continue;
+				}
 				input_args[index] = tkns;
 				tkns = strtok(NULL, delims);
 			}

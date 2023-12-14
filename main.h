@@ -22,6 +22,7 @@ extern char **environ;
 char *input_tkn(char *input);
 void print_shell_prompt(void);
 void _print(const char *format, ...);
+char **splitString(const char* input, const char* delimiters);
 void builtin_cd(char *input_args);
 void builtin_exit();
 int main(void);
