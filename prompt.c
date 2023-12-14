@@ -9,14 +9,16 @@
 
 void print_shell_prompt(void)
 {
-	char cwd[MAX_PATH_LENGTH];
-
-	if (getcwd(cwd, sizeof(cwd)) != NULL)
-	{
-		_print("%s@%s$ ", getenv("USER"), cwd);
-	}
-	else
-	{
-		_print(" $ - ");
-	}
+/*
+ *	char cwd[MAX_PATH_LENGTH];
+ *	if (getcwd(cwd, sizeof(cwd)) != NULL)
+ *	{
+ *		_print("%s@%s$ ", getenv("USER"), cwd);
+ *	}
+ *	else
+ *	{
+ *		_print(" $ - ");
+ *	}
+ */
+	_print(" $ - ");
 }
