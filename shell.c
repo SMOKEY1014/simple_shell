@@ -31,7 +31,7 @@ int main(void)
 
 		if (chars_read == -1)
 		{
-			
+
 			/* Exit command from input / Ctrl + D */
 			if (feof(stdin))
 			{
