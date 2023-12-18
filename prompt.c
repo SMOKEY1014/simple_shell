@@ -20,5 +20,5 @@ void print_shell_prompt(void)
  *		_print(" $ - ");
  *	}
  */
-	_print(" $ - ");
+	_print("");
 }
